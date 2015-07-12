@@ -105,7 +105,7 @@ public class Server
 				if(clientSocket !is null && clientSocket.isAlive()) {
 					id = this.clients.length > 0 ? this.clients.keys.length + 1 : 1;
 				
-					state = new StateObject(clientSocket, id);
+					state = new StateObject(clientSocket, id); // Error: undefined identifier StateObject, did you mean alias IStateObject?
 					//this.clients ~= state; // not working : Error: cannot append type interfaces.istateobject.IStateObject to type IStateObject[int]
 					this.clients[this.clients.length] = state;
 
@@ -157,7 +157,7 @@ public class Server
 		);
 	}
 
-	public void send(int id, Cerealized writer)
+	public void send(int id, Cerealizer writer)
 	{
 		//TODO: 
 	}
