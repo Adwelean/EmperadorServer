@@ -1,4 +1,4 @@
 module network;
 public:
+import network.client;
 import network.server;
-import network.stateobject;

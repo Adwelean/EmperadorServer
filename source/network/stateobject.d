@@ -1,4 +1,4 @@
-module network.stateobject;
+/*module network.stateobject;
 
 import std.socket;
 import interfaces: IStateObject;
@@ -6,7 +6,7 @@ import vendor;
 
 public class StateObject : IStateObject
 {
-	/* Contains the state information. */
+	/* Contains the state information. *
 
 	private const int BUFFER_SIZE = 1024;
 
@@ -75,4 +75,4 @@ public class StateObject : IStateObject
 	{
 		this.reader.reset;
 	}
-}
+}*/

@@ -1,11 +1,16 @@
+
+import libasync;
 import std.stdio;
 
 import packets;
 import core;
 import parsers;
 import vendor;
+import network;
 
-version = LTC_DES;
+EventLoop evl;
+Server listener;
+bool closed;
 
 
 int main(string[] argv)
@@ -19,7 +24,7 @@ int main(string[] argv)
 
 	auto cerealiser = Cerealiser(); //UK spelling
 	cerealiser ~= cast(ushort)0x01; //int
-	cerealiser ~= cast(string)"test";
+	//cerealiser ~= cast(string)"test";
 
 	writeln(cerealiser.bytes);
 
@@ -35,6 +40,15 @@ int main(string[] argv)
 	//PacketManager.instance.handle(cerealiser.bytes);
 
 	//AuthenticatorParser.instance.parse(0x01, null);
+
+	evl = new EventLoop;
+	listener = new Server("localhost", 8081, evl);
+
+	writeln("work");
+
+	while(!closed)
+		evl.loop();
+	destroyAsyncThreads();
 
 	readln();
     return 0;

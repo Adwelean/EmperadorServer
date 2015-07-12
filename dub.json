@@ -5,7 +5,10 @@
 	"targetType":  "executable",
 	"homepage": "",
 	"license": "GPL-2.0",
-	"dependencies": {
-		
-	}
+  "dependencies": {
+    "libasync": "~>0.7.5"
+  },
+  "sourcePaths": [
+      "source"
+  ]
 }

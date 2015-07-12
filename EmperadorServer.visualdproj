@@ -225,6 +225,7 @@
     <File path="source\interfaces\package.d" />
    </Folder>
    <Folder name="network">
+    <File path="source\network\client.d" />
     <File path="source\network\package.d" />
     <File path="source\network\server.d" />
     <File path="source\network\stateobject.d" />
