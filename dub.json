@@ -1,0 +1,11 @@
+{
+	"name": "emperador-server",
+	"description": "The emperador server for updater",
+  "authors": [ "Quentin JOSEPH" ],
+  "targetType":  "executable",
+	"homepage": "",
+	"license": "GPL-2.0",
+	"dependencies": {
+		
+	}
+}

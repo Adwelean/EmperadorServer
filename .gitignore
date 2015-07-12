@@ -1,0 +1,7 @@
+.dub/
+Debug/
+Release/
+source/vendor/C/
+source/vendor/deimos/
+source/vendor/nucular/
+source/vendor/pegged/
