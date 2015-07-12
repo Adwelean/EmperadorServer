@@ -15,7 +15,7 @@ public alias void delegate(int clientId) OnClientDisconnected;
 public class Server 
 {
 	private const int DEFAULT_LIMIT = 250;
-	private const ushort DEFAULT_PORT = 666; // §§§ /!\ YEAH /!\ §§§
+	private const ushort DEFAULT_PORT = 555;
 
 	private Socket listener;
 
@@ -109,6 +109,7 @@ public class Server
 					//this.clients ~= state; // not working : Error: cannot append type interfaces.istateobject.IStateObject to type IStateObject[int]
 					this.clients[this.clients.length] = state;
 
+					// Experimental
 					// Start _receive in a new thread.
 					auto receiver = spawn(&_receive, thisTid);
 					send(receiver, state);
@@ -118,6 +119,7 @@ public class Server
 					OnMessageReceivedHandler(token.Id, token.Data);
 
 					token.reset();
+					//
 				}
 				else if(clientSocket !is null) {	
 					clientSocket.shutdown(SocketShutdown.BOTH);
@@ -153,6 +155,11 @@ public class Server
 				}
 			}
 		);
+	}
+
+	public void send(int id, Cerealized writer)
+	{
+		//TODO: 
 	}
 
 	public void stopListening()
