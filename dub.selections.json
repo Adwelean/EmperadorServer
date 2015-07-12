@@ -1,7 +1,0 @@
-{
-	"versions": {
-		"botan": "1.12.0",
-		"memutils": "0.4.1"
-	},
-	"fileVersion": 1
-}
