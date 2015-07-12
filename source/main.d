@@ -22,15 +22,15 @@ int main(string[] argv)
 	//auto packet = new HelloConnect();
 	//writeln(packet.OpCode);
 
-	auto cerealiser = Cerealiser(); //UK spelling
-	cerealiser ~= cast(ushort)0x01; //int
+	//auto cerealiser = Cerealiser(); //UK spelling
+	//cerealiser ~= cast(ushort)0x01; //int
 	//cerealiser ~= cast(string)"test";
 
-	writeln(cerealiser.bytes);
+	//writeln(cerealiser.bytes);
 
-	auto decerealizer = Decerealizer(cerealiser.bytes); //US spelling works too
-	auto val = decerealizer.value!TestPacket;
-	writeln(val.message);
+	//auto decerealizer = Decerealizer(cerealiser.bytes); //US spelling works too
+	//auto val = decerealizer.value!TestPacket;
+	//writeln(val.message);
 	/*writeln(decerealizer.value!ushort == 0x01);
 	writeln(decerealizer.value!ubyte == 3);
 	writeln(decerealizer.value!string == "test");
@@ -43,8 +43,6 @@ int main(string[] argv)
 
 	evl = new EventLoop;
 	listener = new Server("localhost", 8081, evl);
-
-	writeln("work");
 
 	while(!closed)
 		evl.loop();

@@ -2,10 +2,12 @@ module core.packetmanager;
 
 import std.stdio;
 
-private import core.singleton;
-private import vendor;
-private import enumeration.states;
-private import parsers.authenticatorparser;
+import cerealed: Decerealizer;
+
+import core.singleton;
+import network: Client;
+import enumeration.states;
+import parsers.authenticatorparser;
 
 public class PacketManager
 {
@@ -15,22 +17,20 @@ public class PacketManager
 
 	this() {}
 
-	public void handle(const ubyte[] packet)
+	public void handle(Client client, const ubyte[] packet)
 	{
 		dec = Decerealizer(packet);
 
 		ushort packetId = dec.value!ushort;
 		States phase = getPhase(packetId);
 
-		// make sure to start at beginning
-		dec.reset();
-
 		switch(phase)
 		{
 			case States.AUTH:
-				AuthenticatorParser.instance.parse(packetId, dec);
+				AuthenticatorParser.instance.parse(client, packetId, dec);
 				break;
 			default:
+				writeln("Unknown packet");
 				break;
 		}
 	}

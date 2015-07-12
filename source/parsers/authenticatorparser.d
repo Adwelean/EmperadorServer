@@ -22,8 +22,9 @@ public class AuthenticatorParser : ParserBase
 		PacketsDictionary[0x02] = &testPacket;
 	}
 
-	public override void parse(uint packetID, Decerealizer packet)
+	public override void parse(Client client, uint packetID, Decerealizer packet)
 	{
+		this.client = client;
 		PacketsDictionary[packetID](packet);
 	}
 
@@ -31,7 +32,7 @@ public class AuthenticatorParser : ParserBase
 	{
 		auto hc = packet.value!HelloConnect;
 
-		writeln("OK MA GUEULE !");
+		writeln("It Works!");
 
 		return 0;
 	}
@@ -40,7 +41,7 @@ public class AuthenticatorParser : ParserBase
 	{
 		auto tp = packet.value!TestPacket;
 
-		writeln("Message: " ~ tp.message);
+		writeln(tp.toString());
 		//auto str = format("%s-%s-%s", y, m, d);
 		//writefln("%s-%s-%s", y, m, d);
 

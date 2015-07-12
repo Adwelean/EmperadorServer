@@ -1,11 +1,14 @@
 module parsers.parserbase;
 
-private import interfaces.ipacket;
-private import vendor;
+import interfaces.ipacket;
+import cerealed: Cerealizer, Decerealizer;
+import network: Client;
 
 public class ParserBase
 {
 	private alias int delegate(Decerealizer) callbackFunction;
+
+	protected Client client;
 
 	public callbackFunction[uint] PacketsDictionary;
 
@@ -16,8 +19,8 @@ public class ParserBase
 	}
 
 	public abstract void registerFunction();
-	public void parse(uint packetID, Decerealizer packet)
+	public void parse(Client client, uint packetID, Decerealizer packet)
 	{
-
+		this.client = client;
 	}
 }

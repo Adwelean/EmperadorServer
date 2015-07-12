@@ -1,6 +1,7 @@
 module packets.packetbase;
 
-private import interfaces.ipacket;
+import interfaces.ipacket;
+import std.conv;
 
 public abstract class PacketBase : IPacket
 {
@@ -15,4 +16,9 @@ public abstract class PacketBase : IPacket
 
 	public abstract byte[] serialize();
 	public abstract bool deserialize(byte[] packet);
+
+	public override string toString()
+	{
+		return "Packet [" ~ to!string(this.opCode) ~ "]";
+	}
 }

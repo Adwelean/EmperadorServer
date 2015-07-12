@@ -5,13 +5,24 @@ private import vendor;
 
 public class HelloConnect : IPacket
 {
-	ushort packetId;
+	public static const ushort ID = 0x01;
+	private static const string NAME = "HelloConnect";
 
-	public Cerealiser serialize()
+	public @property string Name()
 	{
-		auto enc = Cerealiser();
-		enc ~= cast(ushort)packetId;
+		return NAME;
+	}
+
+	public Cerealizer serialize()
+	{
+		auto enc = Cerealizer();
+		enc ~= cast(ushort)ID;
 
 		return enc;
+	}
+
+	public override string toString()
+	{
+		return "Packet [" ~ ID ~ "] " ~ NAME;
 	}
 }

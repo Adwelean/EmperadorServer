@@ -1,19 +1,38 @@
 module packets.authenticate.testpacket;
 
-private import interfaces.ipacket;
-private import vendor;
+import std.conv;
+
+import interfaces.ipacket;
+import cerealed: Cerealizer;
 
 class TestPacket : IPacket 
 {
-	ushort packetId;
-	string message;
+	public static const ushort ID = 0x01;
+	private static const string NAME = "HelloConnect";
+		
+	public string message;
 
-	public Cerealiser serialize()
+	public @property string Name()
 	{
-		auto enc = Cerealiser();
-		enc ~= cast(ushort)packetId;
-		enc ~= cast(string)message;
+		return NAME;
+	}
+
+	public @property string Message()
+	{
+		return this.message;
+	}
+
+	public Cerealizer serialize()
+	{
+		auto enc = Cerealizer();
+		enc ~= cast(ushort)ID;
+		enc ~= cast(string)this.message;
 
 		return enc;
+	}
+
+	public override string toString()
+	{
+		return "Packet [" ~ to!string(ID) ~ "] " ~ NAME ~ " contain a message : " ~ this.message;
 	}
 }
